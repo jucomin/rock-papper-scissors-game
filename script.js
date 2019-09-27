@@ -5,7 +5,7 @@ let userChoice
 let isUserWinner
 
 const submit = function() {
-  let computerChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)]
+  computerChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)]
   userChoice = document.querySelector('.radio:checked').value
   checkWinner()
   console.log(userChoice, computerChoice, isUserWinner)
@@ -13,7 +13,7 @@ const submit = function() {
 }
 
 const checkWinner = () => {
-  if (userChoice === 'rock' && computerChoice === 'scissor') {
+  if (userChoice === 'rock' && computerChoice === 'scissors') {
     isUserWinner = true
   } else if (userChoice === 'paper' && computerChoice === 'rock') {
     isUserWinner = true
