@@ -5,10 +5,11 @@ let userChoice
 let isUserWinner
 
 const submit = function() {
-  let computerChoice = CHOICES[Math.floor(Math.random() * CHOICES.lenght)]
+  let computerChoice = CHOICES[Math.floor(Math.random() * CHOICES.length)]
   userChoice = document.querySelector('.radio:checked').value
   checkWinner()
   console.log(userChoice, computerChoice, isUserWinner)
+  showResult()
 }
 
 const checkWinner = () => {
@@ -24,4 +25,21 @@ const checkWinner = () => {
     isUserWinner = false
   }
   return isUserWinner
+}
+
+const showResult = function() {
+  switch (isUserWinner) {
+    case true:
+      document.querySelector('.winner').style.display = 'block'
+      document.querySelector('.looser').style.display = 'none'
+      break
+    case false:
+      document.querySelector('.winner').style.display = 'none'
+      document.querySelector('.looser').style.display = 'block'
+      break
+    default:
+      document.querySelector('.winner').style.display = 'none'
+      document.querySelector('.looser').style.display = 'none'
+      break
+  }
 }
