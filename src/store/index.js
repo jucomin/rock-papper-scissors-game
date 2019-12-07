@@ -11,6 +11,11 @@ export default new Vuex.Store({
     isUserWinner: false,
     showResult: false,
   },
+  getters: {
+    choices: state => state.choices,
+    showResult: state => state.showResult,
+    isUserWinner: state => state.isUserWinner,
+  },
   mutations: {
     setUserChoice(state, userChoice) {
       // console.log('before mutation happens:', state.userChoice)
