@@ -12,10 +12,7 @@
       />
       <the-button type="submit" text="Play!" />
     </form>
-    <!--<result
-      v-if="showResult"
-      :result="isUserWinner"
-    />-->
+    <result v-if="showResult" :result="isUserWinner" />
   </div>
 </template>
 
@@ -23,18 +20,24 @@
 // @ is an alias to /src
 import RadioButton from '@/components/RadioButton.vue';
 import TheButton from '@/components/TheButton.vue';
-// import Result from '@/components/Result.vue';
+import Result from '@/components/Result.vue';
 
 export default {
   name: 'home',
   components: {
     RadioButton,
     TheButton,
-    // Result,
+    Result,
   },
   computed: {
     choices() {
       return this.$store.state.choices;
+    },
+    showResult() {
+      return this.$store.state.showResult;
+    },
+    isUserWinner() {
+      return this.$store.state.isUserWinner;
     },
   },
   methods: {

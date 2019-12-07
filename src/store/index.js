@@ -12,6 +12,14 @@ export default new Vuex.Store({
     showResult: false,
   },
   mutations: {
+    setUserChoice(state, userChoice) {
+      // console.log('before mutation happens:', state.userChoice)
+      state.userChoice = userChoice;
+      // console.log('after mutation happens:', state.userChoice)
+    },
+    setComputerChoice(state, ComputerChoice) {
+      state.ComputerChoice = ComputerChoice;
+    },
     setIsUserWinner(state, choices) {
       let isUserWinner;
       if (
@@ -37,15 +45,26 @@ export default new Vuex.Store({
       // return this.isUserWinner;
       state.isUserWinner = isUserWinner;
     },
+    setResult(state, bool) {
+      console.log('before mutation happens:', state.showResult);
+      state.showResult = bool;
+      console.log('after mutation happens:', state.showResult);
+    },
   },
   actions: {
     playGame({ commit, state }, userSelection) {
+      commit('setResult', false);
       const computerChoice = state.choices[Math.floor(Math.random() * state.choices.length)];
       const userChoice = userSelection;
 
-      console.log(userChoice, computerChoice, state.isUserWinner);
+      // console.log(userChoice, computerChoice, state.isUserWinner)
+
+      commit('setUserChoice', userChoice);
+      commit('setComputerChoice', computerChoice);
       commit('setIsUserWinner', { computerChoice, userChoice });
-      // this.checkWinner();
+
+      commit('setResult', true);
+
       // this.showResult = !this.showResult;
     },
   },
